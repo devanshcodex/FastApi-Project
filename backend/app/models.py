@@ -131,3 +131,30 @@ class TokenPayload(SQLModel):
 class NewPassword(SQLModel):
     token: str
     new_password: str = Field(min_length=8, max_length=128)
+
+
+# TaskFlow project domain
+class ProjectBase(SQLModel):
+    name: str = Field(min_length=2, max_length=120)
+    description: str | None = Field(default=None, max_length=1000)
+
+
+class ProjectCreate(ProjectBase):
+    pass
+
+
+class Project(ProjectBase, table=True):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    owner_id: uuid.UUID = Field(foreign_key="user.id", nullable=False, index=True, ondelete="CASCADE")
+    created_at: datetime = Field(default_factory=get_datetime_utc, sa_type=DateTime(timezone=True))
+
+
+class ProjectPublic(ProjectBase):
+    id: uuid.UUID
+    owner_id: uuid.UUID
+    created_at: datetime
+
+
+class ProjectsPublic(SQLModel):
+    data: list[ProjectPublic]
+    count: int
