@@ -1,88 +1,230 @@
-# Full Stack FastAPI Template
+FarAPI — Full-Stack Web Application
 
-[![Test Docker Compose](../../actions/workflows/test-docker-compose.yml/badge.svg)](../../actions/workflows/test-docker-compose.yml)
-[![Test Backend](../../actions/workflows/test-backend.yml/badge.svg)](../../actions/workflows/test-backend.yml)
+A full-stack web application built with FastAPI, React, PostgreSQL, Docker, and Traefik.
 
-## Technology Stack and Features
+This project started from the Full Stack FastAPI Template and has been configured and developed as a personal full-stack application.
 
-- ⚡ [**FastAPI**](https://fastapi.tiangolo.com) for the Python backend API.
-  - 🧰 [SQLModel](https://sqlmodel.tiangolo.com) for the Python SQL database interactions (ORM).
-  - 🔍 [Pydantic](https://docs.pydantic.dev), used by FastAPI, for the data validation and settings management.
-  - 💾 [PostgreSQL](https://www.postgresql.org) as the SQL database.
-- 🚀 [React](https://react.dev) for the frontend.
-  - 🧩 Built into the backend application and served by FastAPI on the same domain as the API.
-  - 💃 Using TypeScript, hooks, [Vite](https://vitejs.dev), and other parts of a modern frontend stack.
-  - 🎨 [Tailwind CSS](https://tailwindcss.com) and [shadcn/ui](https://ui.shadcn.com) for the frontend components.
-  - 🤖 An automatically generated frontend client.
-  - 🧪 [Playwright](https://playwright.dev) for end-to-end testing.
-  - 🦇 Dark mode support.
-- ☁️ [FastAPI Cloud](https://fastapicloud.com) for deployment.
-- 🐋 [Docker Compose](https://www.docker.com) for local services and self-hosted deployment.
-  - 📞 [Traefik](https://traefik.io) as a reverse proxy with automatic HTTPS.
-- 🔒 Secure password hashing by default.
-- 🔑 JWT (JSON Web Token) authentication.
-- 📫 Email-based password recovery.
-- ✉️ [React Email](https://react.email) for email templates.
-- 📬 [Mailpit](https://mailpit.axllent.org) for local email testing during development.
-- ✅ Tests with [Pytest](https://pytest.org).
-- 🏭 CI (continuous integration) and CD (continuous deployment) based on GitHub Actions.
+🚀 Project Overview
 
-### Dashboard Login
+FarAPI is a containerized full-stack application designed with a modern Python backend and React frontend.
 
-![Dashboard login screenshot](img/login.png)
+The project uses Docker Compose to run the complete local development environment, including the backend API, PostgreSQL database, reverse proxy, email testing, browser testing, and database administration tools.
 
-### Dashboard - Admin
+🛠️ Technology Stack
+Backend
 
-![Admin dashboard screenshot](img/dashboard.png)
+FastAPI — Python web framework for the REST API
 
-### Dashboard - Items
+SQLModel — Database ORM
 
-![Items dashboard screenshot](img/dashboard-items.png)
+Pydantic — Data validation and configuration
 
-### Dashboard - Dark Mode
+PostgreSQL — Relational database
 
-![Dark mode dashboard screenshot](img/dashboard-dark.png)
+JWT authentication
 
-### React Email Templates
+Pytest — Backend testing
 
-![Email templates screenshot](img/react-email.png)
+Frontend
 
-### Mailpit - Local Email Testing
+React
 
-![Mailpit screenshot](img/mailpit.png)
+TypeScript
 
-### Interactive API Documentation
+Vite
 
-![API docs](img/docs.png)
+Tailwind CSS
 
-## How to Use It
+shadcn/ui
 
-Click the **Use this template** button at the top of this page to create a new repository.
+Playwright — End-to-end testing
 
-## Backend Development
+Infrastructure & Development
 
-Backend docs: [backend/README.md](./backend/README.md).
+Docker / Docker Compose
 
-## Frontend Development
+Traefik — Reverse proxy
 
-Frontend docs: [frontend/README.md](./frontend/README.md).
+PostgreSQL
 
-## Deployment
+Mailpit — Local email testing
 
-FastAPI Cloud deployment: [deployment.md](./deployment.md).
+Adminer — Database administration
 
-Self-hosted deployment with Docker Compose: [deployment-docker-compose.md](./deployment-docker-compose.md).
+GitHub Actions — CI/CD
 
-## Development
+🏗️ Architecture
+                         Browser
+                            │
+                            ▼
+                        Traefik
+                            │
+                 ┌──────────┴──────────┐
+                 │                     │
+                 ▼                     ▼
+             React UI              FastAPI
+                                       │
+                                       ▼
+                                  PostgreSQL
+                                       │
+                         ┌─────────────┴─────────────┐
+                         │                           │
+                         ▼                           ▼
+                     Mailpit                    Application Data
 
-General development docs: [development.md](./development.md).
+🐳 Docker Development Environment
 
-This includes the local FastAPI and Vite workflow, Docker Compose services, `.env` configuration, and more.
+The project uses Docker Compose to run the development environment.
 
-## Release Notes
+Main services include:
 
-Check the file [release-notes.md](./release-notes.md).
+Traefik — Reverse proxy and routing
 
-## License
+FastAPI — Backend API
 
-The Full Stack FastAPI Template is licensed under the terms of the MIT license.
+PostgreSQL — Application database
+
+Adminer — Database management
+
+Mailpit — Local email testing
+
+Playwright — End-to-end testing
+
+Start the application
+
+Clone the repository and enter the project directory:
+
+git clone <your-repository-url>
+cd FarAPI-Project
+
+
+Create your local environment file:
+
+cp .env.example .env
+
+
+Configure the required environment variables and start Docker Compose:
+
+docker compose up -d
+
+
+Check the running services:
+
+docker compose ps
+
+🔗 Local Development
+
+The development environment provides access to:
+
+Service	URL
+Application	http://localhost:8081
+FastAPI API	http://localhost:8000
+FastAPI Docs	http://localhost:8000/docs
+Traefik Dashboard	http://localhost:8090
+Adminer	http://localhost:8080
+Mailpit	http://localhost:8026
+🧪 Testing
+
+Backend tests can be run with:
+
+docker compose exec backend pytest
+
+
+End-to-end tests use Playwright.
+
+
+
+Application
+<img width="1917" height="917" alt="Screenshot 2026-09-29 202910" src="https://github.com/user-attachments/assets/f2df56c1-59c1-4e5c-8662-5e7ea7afb48a" />
+
+Dashboard
+
+<img width="1846" height="1052" alt="image" src="https://github.com/user-attachments/assets/a25af052-4fbc-4904-9fdb-d2ec1da2856c" />
+
+
+API Documentation
+
+<img width="1289" height="1080" alt="image" src="https://github.com/user-attachments/assets/dd734cee-cd80-46a7-b857-9666967f2b29" />
+
+
+Docker Environment
+
+<img width="1915" height="1022" alt="Screenshot 2026-09-29 203348" src="https://github.com/user-attachments/assets/21325e58-f8ea-46c7-9ea6-4252a3e7ba8b" />
+
+
+🔐 Environment Variables
+
+Sensitive configuration is stored in environment variables and should not be committed to GitHub.
+
+Create your own .env file using the project's environment configuration and provide the required values for:
+
+Database credentials
+
+Secret key
+
+Administrator credentials
+
+Email configuration
+
+Application configuration
+
+📁 Project Structure
+FarAPI-Project/
+├── backend/
+├── frontend/
+├── compose.yml
+├── compose.override.yml
+├── compose.deploy.yml
+├── README.md
+├── development.md
+└── ...
+
+🎯 What This Project Demonstrates
+
+This project demonstrates practical experience with:
+
+Full-stack application development
+
+REST API development with FastAPI
+
+React and TypeScript frontend development
+
+PostgreSQL database integration
+
+Docker containerization
+
+Multi-service development environments
+
+Reverse proxy configuration with Traefik
+
+API authentication
+
+Automated testing
+
+End-to-end testing with Playwright
+
+Git and GitHub workflow
+
+CI/CD with GitHub Actions
+
+📌 Future Improvements
+
+Potential future improvements include:
+
+Production deployment
+
+Custom domain and HTTPS
+
+Expanded automated test coverage
+
+Monitoring and logging
+
+Improved production infrastructure
+
+Automated deployment through GitHub Actions
+
+📄 License
+
+This project is based on the Full Stack FastAPI Template and retains the applicable MIT license.
+
+See LICENSE for details.
